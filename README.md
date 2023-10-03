@@ -14,6 +14,12 @@ After installing psql, from the express-biztime directory, run the following com
 $ psql < data.sql
 ```
 
+Afterwards, run the server.js file on node to start querying:
+
+```shell
+$ node server.js
+```
+
 ## Companies Requests
 
 #### GET /companies
