@@ -16,11 +16,13 @@ $ psql < data.sql
 
 ## Companies Requests
 
-- GET /companies
-  Returns list of companies, like {companies: [{code, name}, ...]}
+### GET /companies
 
-- GET /companies/code
-  Return obj of company: {company: {code, name, description}}
+- Returns list of companies, like {companies: [{code, name}, ...]}
+
+### GET /companies/code
+
+- Return obj of company: {company: {code, name, description}}
 
 - POST /companies
   Adds a company. Needs to be given JSON like: {code, name, description}
