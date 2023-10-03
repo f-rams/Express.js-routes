@@ -16,66 +16,76 @@ $ psql < data.sql
 
 ## Companies Requests
 
-### GET /companies
+#### GET /companies
 
 - Returns list of companies, like {companies: [{code, name}, ...]}
 
-### GET /companies/code
+#### GET /companies/code
 
 - Return obj of company: {company: {code, name, description}}
 
-- POST /companies
-  Adds a company. Needs to be given JSON like: {code, name, description}
+#### POST /companies
 
-Returns obj of new company: {company: {code, name, description}}
+- Adds a company. Needs to be given JSON like: {code, name, description}
+- Returns obj of new company: {company: {code, name, description}}
 
-- PUT /companies/code
-  Edit existing company. Needs to be given JSON like: {name, description}
+#### PUT /companies/code
 
-Returns update company object: {company: {code, name, description}}
+- Edit existing company. Needs to be given JSON like: {name, description}
+- Returns update company object: {company: {code, name, description}}
 
-- DELETE /companies/code
-  Deletes company.
+#### DELETE /companies/code
 
-Returns {status: "deleted"}
+- Deletes company.
+- Returns {status: "deleted"}
 
 ## Invoices Requests
 
-- GET /invoices
-  Return info on invoices: like {invoices: [{id, comp_code}, ...]}
+#### GET /invoices
 
-- GET /invoices/id
-  Returns obj on given invoice.
-  Returns {invoice: {id, amt, paid, add_date, paid_date, company: {code, name, description}}}
+- Return info on invoices: like {invoices: [{id, comp_code}, ...]}
 
-- POST /invoices
-  Adds an invoice. Needs to be passed in JSON body of: {comp_code, amt}
+#### GET /invoices/id
 
-Returns: {invoice: {id, comp_code, amt, paid, add_date, paid_date}}
+- Returns obj on given invoice.
 
-- PUT /invoices/id
-  Updates an invoice. Needs to be passed in a JSON body of {amt, paid}
+- Returns {invoice: {id, amt, paid, add_date, paid_date, company: {code, name, description}}}
 
-  If paying unpaid invoice: sets paid_date to today. If un-paying: sets paid_date to null. Else: keep current paid_date
+#### POST /invoices
 
-  Returns: {invoice: {id, comp_code, amt, paid, add_date, paid_date}}
+- Adds an invoice. Needs to be passed in JSON body of: {comp_code, amt}
 
-- DELETE /invoices/id
-  Deletes an invoice.
+- Returns: {invoice: {id, comp_code, amt, paid, add_date, paid_date}}
 
-Returns: {status: "deleted"}
+#### PUT /invoices/id
 
-- GET /invoices/companies/code
-  Return obj of company: {company: {code, name, description, invoices: [id, ...]}}
+- Updates an invoice. Needs to be passed in a JSON body of {amt, paid}
+
+- If paying unpaid invoice: sets paid_date to today. If un-paying: sets paid_date to null. Else: keep current paid_date
+
+- Returns: {invoice: {id, comp_code, amt, paid, add_date, paid_date}}
+
+#### DELETE /invoices/id
+
+- Deletes an invoice.
+
+- Returns: {status: "deleted"}
+
+#### GET /invoices/companies/code
+
+- Returns company obj: {company: {code, name, description, invoices: [id, ...]}}
 
 ## Industries Requests
 
-- GET /industries
-  Returns obj on industries: like {industries: ...}
+#### GET /industries
 
-- GET /industries/code
-  Returns obj on given industry.
-  Returns {industry: {....}}
+- Returns obj on industries: like {industries: ...}
 
-- GET /industries/companies/code
-  JOIN TABLE query between companies and industries
+#### GET /industries/code
+
+- Returns obj on given industry.
+- Returns {industry: {....}}
+
+#### GET /industries/companies/code
+
+- JOIN TABLE query between companies and industries
